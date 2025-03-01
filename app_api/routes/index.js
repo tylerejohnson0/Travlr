@@ -1,9 +1,9 @@
+const jwt = require("jsonwebtoken"); // Enable JSON Web Tokens
 const express = require("express");
 const router = express.Router();
 
 const tripsController = require("../controllers/trips");
 const authController = require("../controllers/authentication");
-const jwt = require("express-jwt");
 
 // Method to authenticate our JWT
 function authenticateJWT(req, res, next) {
@@ -26,6 +26,7 @@ function authenticateJWT(req, res, next) {
     return res.sendStatus(401);
   }
   // console.log(process.env.JWT_SECRET);
+
   // console.log(jwt.decode(token));
   const verified = jwt.verify(
     token,
@@ -41,7 +42,6 @@ function authenticateJWT(req, res, next) {
 }
 
 router.route("/register").post(authController.register);
-
 router.route("/login").post(authController.login);
 
 router

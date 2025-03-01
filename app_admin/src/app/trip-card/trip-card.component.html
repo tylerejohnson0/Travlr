@@ -11,15 +11,11 @@
     </h6>
     <p class="card-subtitle mt-3 mb-3 text-muted">
       {{ trip.length }} only
-      {{ trip.perPerson | currency : "USD" : "symbol" }} per person Revised:
-      14-Nov-2023 137
+      {{ trip.perPerson | currency : "USD" : "symbol" }} per person
     </p>
     <p class="card-text" [innerHTML]="trip.description"></p>
-    <div 8ngIf="isLoggedIn()">
-      <div>
-        <button (click)="editTrip(trip)" class="btn btn-info">Edit</button>
-        <!-- <button (click)="deleteTrip(trip)" class="btn btn-danger">Delete</button> -->
-      </div>
+    <div *ngIf="isLoggedIn()">
+      <button (click)="editTrip(trip)" class="btn btn-info">Edit Trip</button>
     </div>
   </div>
 </div>
